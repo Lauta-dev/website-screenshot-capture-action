@@ -63,7 +63,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 				} catch (error) {
 					throw new Error(error.message);
 				} finally {
-					await browser.close();
+					return { ok: false, message: error.message };
 				}
 			}
 		} else {
@@ -74,7 +74,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 					page,
 				});
 			} catch (error) {
-				throw new Error(error.message);
+				return { ok: false, message: error.message };
 			} finally {
 				await browser.close();
 			}
@@ -86,8 +86,6 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 		};
 	} catch (error) {
 		return { ok: false, message: error.message };
-	} finally {
-		await browser.close();
 	}
 }
 

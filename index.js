@@ -9,16 +9,21 @@ async function main() {
 		const url = core.getInput("url");
 		const name = core.getInput("name");
 		let pagesFile = core.getInput("pages_file");
+		let output;
 
 		if (pagesFile) {
 			pagesFile = await yamlToObject(pagesFile);
 
-			await captureScreenshot({ pages: pagesFile.pages });
+			output = await captureScreenshot({ pages: pagesFile.pages });
 		} else if (url && name) {
-			await captureScreenshot({
+			output = await captureScreenshot({
 				onlyPageUrl: url,
 				onlyPageName: name,
 			});
+		}
+
+		if (!output.ok) {
+			throw new Error(output.message);
 		}
 
 		core.setOutput("screenshot-path", dir);

@@ -1,4 +1,5 @@
 const y = require("yaml");
+const fs = require("node:fs");
 
 /**
  * @param {string} file

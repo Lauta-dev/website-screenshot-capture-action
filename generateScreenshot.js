@@ -52,8 +52,8 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 		const page = await browser.newPage();
 
 		await page.setViewport({
-			width: core.getInput("width"),
-			height: core.getInput("height"),
+			width: Number.parseInt(core.getInput("width")),
+			height: Number.parseInt(core.getInput("height")),
 		});
 
 		if (pages) {

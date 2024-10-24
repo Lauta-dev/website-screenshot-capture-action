@@ -21,8 +21,13 @@ async function savePageScreenshot({ url, name, page }) {
 			throw new Error(`Error al acceder a la página. Estado: ${res.status()}`);
 		}
 
+		if (type == "png") {
+			await page.screenshot({ path, type });
+		} else {
+			await page.screenshot({ path, type, quality });
+		}
+
 		let path = `${name}.${type}`;
-		await page.screenshot({ path, type, quality });
 		fs.renameSync(path, `${dir}/${path}`);
 	} catch (error) {
 		throw new Error(`Error: ${error.message}`);

@@ -1,19 +1,41 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Website Screenshot Capture'
+description: 'Action to capture screenshots of web pages.'
 inputs:
-
   url:
-    description: URL de la página web
+    description: 'URL of the webpage to capture.'
+    required: false
 
   name:
-    description: Nombre que se le da al fichero
+    description: 'File name for the screenshot.'
+    required: false
 
   pages_file:
-    description: Archivo que contiene todas las páginas por procesar
+    description: 'File containing a list of pages to process. If provided, "url" will be ignored.'
+    required: false
+
+  width:
+    description: 'Width of the screenshot in pixels (default: 1366).'
+    default: '1366'
+    required: false
+
+  height:
+    description: 'Height of the screenshot in pixels (default: 768).'
+    default: '768'
+    required: false
+
+  type:
+    description: 'Image format for the screenshot (default: png). Options: webp, jpeg, png.'
+    default: 'png'
+    required: false
+
+  quality:
+    description: 'Quality of the image (only applicable for jpeg and webp). Range: 0 to 100 (default: 100).'
+    default: '100'
+    required: false
 
 outputs:
-  screenshot-path: # id of output
-    description: 'The time we greeted you'
+  screenshot-path:
+    description: 'Path where the screenshot is saved'
 
 runs:
   using: node20

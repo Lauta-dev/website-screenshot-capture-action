@@ -1,0 +1,20 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+
+  url:
+    description: URL de la página web
+
+  name:
+    description: Nombre que se le da al fichero
+
+  pages_file:
+    description: Archivo que contiene todas las páginas por procesar
+
+outputs:
+  screenshot-path: # id of output
+    description: 'The time we greeted you'
+
+runs:
+  using: node20
+  main: dist/index.js

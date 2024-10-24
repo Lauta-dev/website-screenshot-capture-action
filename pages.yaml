@@ -1,0 +1,5 @@
+pages:
+  - url: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow
+    name: Doc de github
+  - url: https://stackoverflow.com/questions/62228154/puppeteer-fails-to-initiate-in-github-actions
+    name: startasd

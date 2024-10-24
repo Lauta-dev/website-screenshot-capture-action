@@ -14,7 +14,7 @@ const dir = "screenshots";
 async function savePageScreenshot({ url, name, page }) {
 	try {
 		const res = await page.goto(url);
-		const quality = core.getInput("quality");
+		const quality = Number.parseInt(core.getInput("quality"));
 		const type = core.getInput("type");
 
 		if (!res.ok()) {

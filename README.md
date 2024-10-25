@@ -5,6 +5,8 @@
 - [Usage](#usage)
 - [Inputs](#inputs)
 - [Output](#output)
+- [Example](#example)
+    - [Push images to another Repository](#push-images-to-another-repository)
 
 ## Usage
 
@@ -74,4 +76,57 @@ jobs:
           height: 915
           type: webp
           quality: 60
+```
+
+### Push images to another repository
+```yaml
+name: Take screenshot
+on:
+  - push
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Screenshot Capture
+        uses: lauta-dev/website-screenshot-capture-action
+        with:
+          pages_file: pages.yml
+          width: 412
+          height: 915
+          type: webp
+          quality: 60
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: screenshots/
+
+  push-images:
+    runs-on: ubuntu-latest
+    needs: [screenshots]
+    steps:
+      - name: Clone repository
+        run: git clone https://github.com/Lauta-dev/resource.git .
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: screenshots
+
+      - name: Set up Git
+        run: |
+          git config user.name "${{ secrets.GH_USERNAME }}"
+          git config user.email "${{ secrets.GH_MAIL }}"
+          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/Lauta-dev/resource.git
+
+      - name: Add images and commited
+        run: |
+          git add .
+          git commit -m "Agregar captura de pantalla"
+
+      - name: Push screenshots
+        run: |
+          git push origin main
 ```

@@ -15,7 +15,9 @@
   with:
     pages_file: pages.yml # or pages.yaml
 ```
+> [!NOTE]
 > The file can be named however you like, but it needs to be in YAML format.
+> [The file need this format](./pages.yaml)
 
 ### Direct inputs
 ```yaml

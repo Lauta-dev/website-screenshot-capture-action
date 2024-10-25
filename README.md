@@ -1,4 +1,4 @@
-# Website screenshot Capture
+# Website Screenshot Capture
 > Automatically captures screenshots of specified web pages, with options to load from a YAML file or via direct inputs.
 
 ## Contents
@@ -54,3 +54,24 @@
 
 ## Output
 Screenshots are saved in screenshots/.
+
+
+## Example
+```yaml
+name: Take screenshot
+on:
+  - push
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Screenshot Capture
+        uses: lauta-dev/website-screenshot-capture-action
+        with:
+          pages_file: pages.yml
+          width: 412
+          height: 915
+          type: webp
+          quality: 60
+```

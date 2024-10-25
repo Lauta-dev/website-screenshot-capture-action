@@ -35,7 +35,8 @@
 | url        | string    |
 | pages_file | YAML file |
 
->[!INFO] By default, the program will try to load the YAML file. If not found, it will load url and name. 
+> [!NOTE]
+> By default, the program will try to load the YAML file. If not found, it will load url and name. 
 
 ### Optional inputs
 
@@ -46,7 +47,8 @@
 | type       | string    | png     | png, webp, jpeg |
 | quality    | number    | 100     | 0 to 100        |
 
->[!INFO] Quality is only applicable to webp and jpeg.
+> [!NOTE]
+> Quality is only applicable to webp and jpeg.
 
 ## Output
 Screenshots are saved in screenshots/.

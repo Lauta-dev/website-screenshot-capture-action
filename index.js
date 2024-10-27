@@ -1,20 +1,17 @@
 const core = require("@actions/core");
 const { captureScreenshot } = require("./generateScreenshot.js");
 const { yamlToObject } = require("./yamlToObject.js");
+const { dir } = require("./const.js");
+const { pagesFile, url, name } = require("./inputs.js");
 
 async function main() {
-	const dir = "./screenshots";
-
 	try {
-		const url = core.getInput("url");
-		const name = core.getInput("name");
-		let pagesFile = core.getInput("pages_file");
 		let output;
 
 		if (pagesFile) {
-			pagesFile = await yamlToObject(pagesFile);
+			const arr = await yamlToObject(pagesFile);
 
-			output = await captureScreenshot({ pages: pagesFile.pages });
+			output = await captureScreenshot({ pages: arr.pages });
 		} else if (url && name) {
 			output = await captureScreenshot({
 				onlyPageUrl: url,

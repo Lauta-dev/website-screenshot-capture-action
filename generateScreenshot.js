@@ -1,8 +1,7 @@
 const puppeteer = require("puppeteer");
 const fs = require("node:fs");
-const core = require("@actions/core");
-
-const dir = "screenshots";
+const { dir } = require("./const.js");
+const { width, height, type, quality } = require("./inputs.js");
 
 /**
  *
@@ -14,8 +13,6 @@ const dir = "screenshots";
 async function savePageScreenshot({ url, name, page }) {
 	try {
 		const res = await page.goto(url);
-		const quality = Number.parseInt(core.getInput("quality"));
-		const type = core.getInput("type");
 
 		if (!res.ok()) {
 			throw new Error(`Error al acceder a la página. Estado: ${res.status()}`);
@@ -54,11 +51,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 		});
 
 		const page = await browser.newPage();
-
-		await page.setViewport({
-			width: Number.parseInt(core.getInput("width")),
-			height: Number.parseInt(core.getInput("height")),
-		});
+		await page.setViewport({ width, height });
 
 		if (pages) {
 			for (const { name, url } of pages) {

@@ -2,6 +2,7 @@ const puppeteer = require("puppeteer");
 const fs = require("node:fs");
 const { dir } = require("./const.js");
 const { width, height, type, quality } = require("./inputs.js");
+const { Warning } = require("./Warning.js");
 
 /**
  *
@@ -15,9 +16,9 @@ async function savePageScreenshot({ url, name, page }) {
 		const res = await page.goto(url);
 
 		if (!res.ok()) {
-			throw new Error(
-				`Error al acceder a la página. Estado: ${res.status()}. URL: ${url}`,
-			);
+			throw new Warning(`
+        La URL: ${url} no se procesara, código de estado: ${res.status()}
+      `);
 		}
 		let path = `${name}.${type}`;
 

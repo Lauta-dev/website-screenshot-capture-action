@@ -27,7 +27,9 @@ async function savePageScreenshot({ url, name, page }) {
 		} else {
 			await page.screenshot({ path, type, quality });
 		}
+
 		fs.renameSync(path, `${dir}/${path}`);
+		console.log(`Info: URL: ${url} procesada. Ruta: ${dir}/${path}`);
 	} catch (error) {
 		throw new Error(`Error: ${error.message}`);
 	}

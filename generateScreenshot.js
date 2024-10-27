@@ -60,7 +60,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 				try {
 					await savePageScreenshot({ url, name, page });
 				} catch (error) {
-					console.warn(error.message);
+					console.warn(`::warning::${error.message}`);
 				}
 			}
 		} else {

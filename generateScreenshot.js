@@ -15,7 +15,9 @@ async function savePageScreenshot({ url, name, page }) {
 		const res = await page.goto(url);
 
 		if (!res.ok()) {
-			throw new Error(`Error al acceder a la página. Estado: ${res.status()}`);
+			throw new Error(
+				`Error al acceder a la página. Estado: ${res.status()}. URL: ${url}`,
+			);
 		}
 		let path = `${name}.${type}`;
 

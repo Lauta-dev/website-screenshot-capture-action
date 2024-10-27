@@ -16,9 +16,9 @@ async function savePageScreenshot({ url, name, page }) {
 		const res = await page.goto(url);
 
 		if (!res.ok()) {
-			throw new Warning(`
-        La URL: ${url} no se procesara, código de estado: ${res.status()}
-      `);
+			throw new Warning(
+				`La URL: ${url} no se procesara, código de estado: ${res.status()}`,
+			);
 		}
 		let path = `${name}.${type}`;
 
@@ -61,7 +61,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 				try {
 					await savePageScreenshot({ url, name, page });
 				} catch (error) {
-					console.warn(`::warning::${error.message}`);
+					console.log(`::warning::${error.message}`);
 				}
 			}
 		} else {

@@ -1,7 +1,7 @@
 class Warning extends Error {
 	constructor(message) {
 		super(message);
-		this.name = "Warning";
+		this.name = "URLError";
 	}
 }
 

@@ -9,13 +9,19 @@
 		"build:index": "ncc build index.js --license licenses.txt"
 	},
 	"license": "ISC",
-	"keywords": ["github-actions", "screenshot", "web", "automation"],
+	"keywords": [
+		"github-actions",
+		"screenshot",
+		"web",
+		"automation"
+	],
 	"dependencies": {
 		"@actions/core": "1.11.1",
 		"puppeteer": "23.6.0",
 		"yaml": "2.6.0"
 	},
 	"devDependencies": {
-		"@vercel/ncc": "0.38.2"
+		"@vercel/ncc": "0.38.2",
+		"typescript": "^5.6.3"
 	}
 }

@@ -3,7 +3,7 @@
 	"description": "A GitHub Action to capture screenshots of websites.",
 	"author": "lautaro",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "index.ts",
 	"scripts": {
 		"build": "./build.sh",
 		"build:index": "ncc build index.js --license licenses.txt"

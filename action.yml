@@ -33,6 +33,11 @@ inputs:
     default: '100'
     required: false
 
+  output:
+    description: 'Output dir'
+    default: 'screenshots'
+    required: true
+
 outputs:
   screenshot-path:
     description: 'Path where the screenshot is saved'

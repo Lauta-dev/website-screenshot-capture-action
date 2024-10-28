@@ -1,18 +1,27 @@
-const puppeteer = require("puppeteer");
-const fs = require("node:fs");
-const { width, height, type, quality, outputDir } = require("./inputs.js");
-const { Warning } = require("./Warning.js");
+import puppeteer, { Page } from "puppeteer";
+import fs from "node:fs";
+import { width, height, type, quality, outputDir } from "./inputs";
+import { Warning } from "./Warning";
 
-/**
- *
- * @param {Object} param0
- * @param {string} param0.url
- * @param {string} param0.name
- * @param {puppeteer.Page} param0.page
- */
-async function savePageScreenshot({ url, name, page }) {
+async function savePageScreenshot({
+	url,
+	name,
+	page,
+}: {
+	url?: string;
+	name?: string;
+	page: Page;
+}) {
 	try {
+		if (!url) {
+			throw new Warning("No se dio la URL");
+		}
+
 		const res = await page.goto(url);
+
+		if (!res) {
+			return;
+		}
 
 		if (!res.ok()) {
 			throw new Warning(
@@ -30,17 +39,19 @@ async function savePageScreenshot({ url, name, page }) {
 		fs.renameSync(path, `${outputDir}/${path}`);
 		console.log(`Info: URL: ${url} procesada. Ruta: ${outputDir}/${path}`);
 	} catch (error) {
-		throw new Error(`Error: ${error.message}`);
+		throw new Error(`Error: ${error}`);
 	}
 }
 
-/**
- * @param {Object} param0
- * @param {Array<{ name: string, url: string }>} param0.pages
- * @param {string} param0.onlyPageName
- * @param {string} param0.onlyPageUrl
- */
-async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
+export async function captureScreenshot({
+	pages,
+	onlyPageName,
+	onlyPageUrl,
+}: {
+	pages?: { name: string; url: string }[];
+	onlyPageName?: string;
+	onlyPageUrl?: string;
+}) {
 	let browser;
 
 	if (!fs.existsSync(outputDir)) {
@@ -62,7 +73,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 				try {
 					await savePageScreenshot({ url, name, page });
 				} catch (error) {
-					console.log(`::warning::${error.message}`);
+					console.log(`::warning::${error}`);
 				}
 			}
 		} else {
@@ -73,7 +84,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 					page,
 				});
 			} catch (error) {
-				return { ok: false, message: error.message };
+				return { ok: false, message: error };
 			}
 		}
 
@@ -82,14 +93,10 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 			message: `Imagenes generadas en ${outputDir}`,
 		};
 	} catch (error) {
-		return { ok: false, message: error.message };
+		return { ok: false, message: error };
 	} finally {
 		if (browser) {
 			await browser.close();
 		}
 	}
 }
-
-module.exports = {
-	captureScreenshot,
-};

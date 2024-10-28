@@ -36,7 +36,7 @@ inputs:
   output:
     description: 'Output dir'
     default: 'screenshots'
-    required: true
+    required: false
 
 outputs:
   screenshot-path:

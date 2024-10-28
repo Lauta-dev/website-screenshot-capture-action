@@ -6,7 +6,7 @@ const fs = require("node:fs");
  * */
 async function yamlToObject(file) {
 	try {
-		const yaml = await fs.readFileSync(file, "utf8");
+		const yaml = fs.readFileSync(file, "utf8");
 		return y.parse(yaml);
 	} catch (error) {
 		throw new Error(error.message);

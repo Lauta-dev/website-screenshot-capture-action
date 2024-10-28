@@ -44,12 +44,13 @@
 
 ### Optional inputs
 
-| Input      | Type      | Default | Posible value   |
-|------------|-----------|---------|-----------------|
-| width      | number    | 1366    |                 |
-| height     | number    | 768     |                 |
-| type       | string    | png     | png, webp, jpeg |
-| quality    | number    | 100     | 0 to 100        |
+| Input      | Type      | Default        | Posible value   |
+|------------|-----------|----------------|-----------------|
+| width      | number    | 1366           |                 |
+| height     | number    | 768            |                 |
+| type       | string    | png            | png, webp, jpeg |
+| quality    | number    | 100            | 0 to 100        |
+| output     | string    | screenshots    | 0 to 100        |
 
 > [!NOTE]
 > Quality is only applicable to webp and jpeg.

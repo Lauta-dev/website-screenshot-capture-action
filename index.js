@@ -1,8 +1,7 @@
 const core = require("@actions/core");
 const { captureScreenshot } = require("./generateScreenshot.js");
 const { yamlToObject } = require("./yamlToObject.js");
-const { dir } = require("./const.js");
-const { pagesFile, url, name } = require("./inputs.js");
+const { pagesFile, url, name, outputDir } = require("./inputs.js");
 
 async function main() {
 	try {
@@ -23,7 +22,7 @@ async function main() {
 			throw new Error(output.message);
 		}
 
-		core.setOutput("screenshot-path", dir);
+		core.setOutput("screenshot-path", outputDir);
 	} catch (error) {
 		core.setFailed(error.message);
 	}

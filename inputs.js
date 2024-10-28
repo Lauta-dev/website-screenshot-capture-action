@@ -3,6 +3,7 @@ const { getInput } = require("@actions/core");
 const url = getInput("url");
 const name = getInput("name");
 const pagesFile = getInput("pages_file");
+const outputDir = getInput("output");
 
 // Optional Inputs
 const width = Number.parseInt(getInput("width")); // Default: 1360
@@ -18,4 +19,5 @@ module.exports = {
 	height,
 	type: fileType,
 	quality,
+	outputDir,
 };

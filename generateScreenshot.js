@@ -1,7 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("node:fs");
-const { dir } = require("./const.js");
-const { width, height, type, quality } = require("./inputs.js");
+const { width, height, type, quality, outputDir } = require("./inputs.js");
 const { Warning } = require("./Warning.js");
 
 /**
@@ -28,8 +27,8 @@ async function savePageScreenshot({ url, name, page }) {
 			await page.screenshot({ path, type, quality });
 		}
 
-		fs.renameSync(path, `${dir}/${path}`);
-		console.log(`Info: URL: ${url} procesada. Ruta: ${dir}/${path}`);
+		fs.renameSync(path, `${outputDir}/${path}`);
+		console.log(`Info: URL: ${url} procesada. Ruta: ${outputDir}/${path}`);
 	} catch (error) {
 		throw new Error(`Error: ${error.message}`);
 	}
@@ -44,8 +43,8 @@ async function savePageScreenshot({ url, name, page }) {
 async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 	let browser;
 
-	if (!fs.existsSync(dir)) {
-		fs.mkdirSync(dir);
+	if (!fs.existsSync(outputDir)) {
+		fs.mkdirSync(outputDir);
 	}
 
 	try {
@@ -80,7 +79,7 @@ async function captureScreenshot({ pages, onlyPageName, onlyPageUrl }) {
 
 		return {
 			ok: true,
-			message: `Imagenes generadas en ${dir}`,
+			message: `Imagenes generadas en ${outputDir}`,
 		};
 	} catch (error) {
 		return { ok: false, message: error.message };

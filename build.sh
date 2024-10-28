@@ -13,7 +13,7 @@ get_date() {
 
 compile() {
   echo "-----| Compilando proyecto |-----"
-  npx ncc build index.js --license licenses.txt
+  npx ncc build index.ts --license licenses.txt
   echo "--------------------------------------"
   echo " "
 }

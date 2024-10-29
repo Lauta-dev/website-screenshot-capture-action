@@ -39,7 +39,7 @@ async function savePageScreenshot({
 				const parseText = JSON.parse(rawText);
 				const pr = JSON.stringify(parseText, null, 2);
 
-				body.innerHTML = `<pre>${pr}</pre>`;
+				body.innerHTML = `<pre>:::::::: ${pr}</pre>`;
 			});
 		};
 

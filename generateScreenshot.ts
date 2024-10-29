@@ -29,11 +29,34 @@ async function savePageScreenshot({
 			);
 		}
 		let path = `${name}.${type}`;
+		const headers = res.headers();
+		const contentType = headers["content-type"];
+
+		const prettyJson = async () =>
+			await page.evaluate(() => {
+				const body = document.body;
+				const rawText = body.innerText;
+				const parseText = JSON.parse(rawText);
+				const pr = JSON.stringify(parseText, null, 2);
+
+				body.innerHTML = `<pre>${pr}</pre>`;
+			});
 
 		if (type == "png") {
-			await page.screenshot({ path, type });
+			if (contentType.includes("application/json")) {
+				await prettyJson();
+				await page.screenshot({ path, type });
+			} else {
+				await page.screenshot({ path, type });
+			}
 		} else {
-			await page.screenshot({ path, type, quality });
+			if (contentType.includes("application/json")) {
+				await prettyJson();
+
+				await page.screenshot({ path, type, quality });
+			} else {
+				await page.screenshot({ path, type, quality });
+			}
 		}
 
 		fs.renameSync(path, `${outputDir}/${path}`);

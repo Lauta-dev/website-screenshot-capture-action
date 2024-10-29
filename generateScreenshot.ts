@@ -32,7 +32,7 @@ async function savePageScreenshot({
 		const headers = res.headers();
 		const contentType = headers["content-type"];
 
-		const prettyJson = async () =>
+		const prettyJson = async () => {
 			await page.evaluate(() => {
 				const body = document.body;
 				const rawText = body.innerText;
@@ -41,6 +41,9 @@ async function savePageScreenshot({
 
 				body.innerHTML = `<pre>${pr}</pre>`;
 			});
+		};
+
+		console.log(contentType);
 
 		if (type == "png") {
 			if (contentType.includes("application/json")) {

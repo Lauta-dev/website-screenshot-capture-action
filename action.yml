@@ -1,5 +1,9 @@
 name: 'Website Screenshot Capture'
 description: 'Action to capture screenshots of web pages.'
+branding:
+  icon: 'image'
+  color: 'green'
+
 inputs:
   url:
     description: 'URL of the webpage to capture.'

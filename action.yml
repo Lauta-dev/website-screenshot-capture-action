@@ -13,7 +13,7 @@ inputs:
     description: 'File name for the screenshot.'
     required: false
 
-  pages_file:
+  urls_input_file:
     description: 'File containing a list of pages to process. If provided, "url" will be ignored.'
     required: false
 
@@ -37,7 +37,7 @@ inputs:
     default: '100'
     required: false
 
-  output:
+  output_dir:
     description: 'Output dir'
     default: 'screenshots'
     required: false

@@ -16,7 +16,7 @@
 - name: Website screenshot
   uses: lauta-dev/website-screenshot-capture-action
   with:
-    pages_file: pages.yml # or pages.yaml
+    urls_input_file: pages.yml # or pages.yaml
 ```
 > [!NOTE]
 > The file can be named however you like, but it needs to be in YAML format.
@@ -38,7 +38,7 @@
 |------------|-----------|
 | name       | string    |
 | url        | string    |
-| pages_file | YAML file |
+| urls_input_file | YAML file |
 
 > [!NOTE]
 > By default, the program will try to load the YAML file. If not found, it will load url and name. 
@@ -51,7 +51,7 @@
 | height     | number    | 768            |                 |
 | type       | string    | png            | png, webp, jpeg |
 | quality    | number    | 100            | 0 to 100        |
-| output     | string    | screenshots    | 0 to 100        |
+| output_dir     | string    | screenshots    | 0 to 100        |
 
 > [!NOTE]
 > Quality is only applicable to webp and jpeg.
@@ -73,7 +73,7 @@ jobs:
       - name: Screenshot Capture
         uses: lauta-dev/website-screenshot-capture-action
         with:
-          pages_file: pages.yml
+          urls_input_file: pages.yml
           width: 412
           height: 915
           type: webp
@@ -93,7 +93,7 @@ jobs:
       - name: Screenshot Capture
         uses: lauta-dev/website-screenshot-capture-action
         with:
-          pages_file: pages.yml
+          urls_input_file: pages.yml
           width: 412
           height: 915
           type: webp

@@ -13,7 +13,7 @@ export async function yamlToObject(file: string): Promise<
 > {
 	try {
 		const yaml = readFileSync(file, "utf8");
-		return parse(yaml);
+		return parse(yaml).pages;
 	} catch (error) {
 		throw new Error(error as string);
 	}

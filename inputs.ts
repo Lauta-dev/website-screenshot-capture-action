@@ -4,6 +4,7 @@ export const url = getInput("url");
 export const name = getInput("name");
 export const pagesFile = getInput("urls_input_file");
 export const outputDir = getInput("output_dir");
+export const script = getInput("script");
 
 // Optional Inputs
 export const width = Number.parseInt(getInput("width")); // Default: 1360

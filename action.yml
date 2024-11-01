@@ -42,6 +42,10 @@ inputs:
     default: 'screenshots'
     required: false
 
+  script:
+    description: 'Path to a script file to run before the screenshot is taken.'
+    required: false
+
 outputs:
   screenshot-path:
     description: 'Path where the screenshot is saved'

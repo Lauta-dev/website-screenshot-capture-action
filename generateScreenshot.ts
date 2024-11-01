@@ -2,6 +2,7 @@ import puppeteer, { Page } from "puppeteer";
 import fs from "node:fs";
 import { width, height, type, quality, outputDir } from "./inputs";
 import { Warning } from "./Warning";
+import { scriptToText } from "./scriptToText";
 
 async function savePageScreenshot({
 	url,
@@ -30,10 +31,18 @@ async function savePageScreenshot({
 		}
 		let path = `${name}.${type}`;
 
+		// Run script before screenshot
+		// Evaluate script run in page context
+		await page.evaluate(scriptToText());
+
+		const def = { path, type };
+
 		if (type == "png") {
-			await page.screenshot({ path, type });
+			await page.screenshot(def);
+		} else if (type == "webp" || type == "jpeg") {
+			await page.screenshot({ ...def, quality });
 		} else {
-			await page.screenshot({ path, type, quality });
+			throw new Error(`Formato de imagen no soportado: ${type}`);
 		}
 
 		fs.renameSync(path, `${outputDir}/${path}`);

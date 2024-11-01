@@ -7,10 +7,12 @@ import { scriptToText } from "./scriptToText";
 async function savePageScreenshot({
 	url,
 	name,
+	script,
 	page,
 }: {
 	url?: string;
 	name?: string;
+	script: string;
 	page: Page;
 }) {
 	try {
@@ -33,7 +35,7 @@ async function savePageScreenshot({
 
 		// Run script before screenshot
 		// Evaluate script run in page context
-		await page.evaluate(scriptToText());
+		await page.evaluate(script);
 
 		const def = { path, type };
 
@@ -57,7 +59,7 @@ export async function captureScreenshot({
 	onlyPageName,
 	onlyPageUrl,
 }: {
-	pages?: { name: string; url: string }[];
+	pages?: { name: string; url: string; script: string }[];
 	onlyPageName?: string;
 	onlyPageUrl?: string;
 }) {
@@ -77,20 +79,23 @@ export async function captureScreenshot({
 		const page = await browser.newPage();
 		await page.setViewport({ width, height });
 
+		// Hace un loop al archivo de páginas
 		if (pages) {
-			for (const { name, url } of pages) {
+			for (const { name, url, script } of pages) {
 				try {
-					await savePageScreenshot({ url, name, page });
+					await savePageScreenshot({ url, name, page, script });
 				} catch (error) {
 					console.log(`::warning::${error}`);
 				}
 			}
 		} else {
+			// Carga la url, name y script de la página por los inputs
 			try {
 				await savePageScreenshot({
 					url: onlyPageUrl,
 					name: onlyPageName,
 					page,
+					script: scriptToText(),
 				});
 			} catch (error) {
 				return { ok: false, message: error };

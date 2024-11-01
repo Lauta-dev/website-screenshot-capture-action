@@ -2,13 +2,16 @@ import { script } from "./inputs";
 import fs from "node:fs";
 
 export function scriptToText() {
-	const scriptFile = script;
-
-	if (!scriptFile) {
-		return;
+	if (!script) {
+		return "";
 	}
 
-	const scriptContent = fs.readFileSync(scriptFile, "utf8");
+	if (!script.endsWith(".js")) {
+		console.log(`::warning::El script no es un archivo JS, se ignorará`);
+		return "";
+	}
+
+	const scriptContent = fs.readFileSync(script, "utf8");
 	console.log(`::debug::Script content: ${scriptContent}`);
 
 	return scriptContent;

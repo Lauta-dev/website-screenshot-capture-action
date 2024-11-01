@@ -1,7 +1,6 @@
-import { script } from "./inputs";
 import fs from "node:fs";
 
-export function scriptToText() {
+export function scriptToText(script?: string) {
 	if (!script) {
 		return "";
 	}

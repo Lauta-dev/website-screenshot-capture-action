@@ -1,6 +1,6 @@
 import puppeteer, { Page } from "puppeteer";
 import fs from "node:fs";
-import { width, height, type, quality, outputDir } from "./inputs";
+import { width, height, type, quality, outputDir, script } from "./inputs";
 import { Warning } from "./Warning";
 import { scriptToText } from "./scriptToText";
 
@@ -83,7 +83,12 @@ export async function captureScreenshot({
 		if (pages) {
 			for (const { name, url, script } of pages) {
 				try {
-					await savePageScreenshot({ url, name, page, script });
+					await savePageScreenshot({
+						url,
+						name,
+						page,
+						script: scriptToText(script),
+					});
 				} catch (error) {
 					console.log(`::warning::${error}`);
 				}
@@ -95,7 +100,7 @@ export async function captureScreenshot({
 					url: onlyPageUrl,
 					name: onlyPageName,
 					page,
-					script: scriptToText(),
+					script: scriptToText(script),
 				});
 			} catch (error) {
 				return { ok: false, message: error };

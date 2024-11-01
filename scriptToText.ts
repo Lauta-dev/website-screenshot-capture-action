@@ -1,4 +1,5 @@
 import { script } from "./inputs";
+import fs from "node:fs";
 
 export function scriptToText() {
 	const scriptFile = script;

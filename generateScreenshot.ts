@@ -34,7 +34,9 @@ async function savePageScreenshot({
 		// Run script before screenshot
 		// Evaluate script run in page context
 
-		await page.evaluate(() => scriptToText());
+		if (!scriptToText() != undefined) {
+			await page.evaluate(scriptToText() as string);
+		}
 
 		const def = { path, type };
 

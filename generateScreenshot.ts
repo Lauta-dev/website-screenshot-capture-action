@@ -65,7 +65,6 @@ export async function captureScreenshot({
 	onlyPageUrl?: string;
 }) {
 	let browser;
-	console.log("captureScreenshotasd");
 
 	if (!fs.existsSync(outputDir)) {
 		fs.mkdirSync(outputDir);
@@ -77,6 +76,7 @@ export async function captureScreenshot({
 			args: [`--no-sandbox`, `--disable-setuid-sandbox`],
 			executablePath: "/usr/bin/chromium",
 		});
+		console.log(pages);
 
 		const page = await browser.newPage();
 		await page.setViewport({ width, height });
@@ -85,7 +85,6 @@ export async function captureScreenshot({
 		if (pages) {
 			for (const { name, url, script } of pages) {
 				try {
-					console.log(name);
 					await savePageScreenshot({
 						url,
 						name,

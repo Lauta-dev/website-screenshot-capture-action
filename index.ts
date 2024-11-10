@@ -10,10 +10,11 @@ async function main() {
 		if (pagesFile) {
 			const arr = await yamlToObject(pagesFile);
 
-			if (!arr) {
-				output = await captureScreenshot({ pages: arr });
-				console.log(output);
+			if (!arr.ok) {
+				throw new Error(arr.errMessage as string);
 			}
+
+			output = await captureScreenshot({ pages: arr.pages });
 		} else if (url && name) {
 			output = await captureScreenshot({
 				onlyPageUrl: url,

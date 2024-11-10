@@ -4,6 +4,8 @@ import { yamlToObject } from "./yamlToObject";
 import { pagesFile, url, name, outputDir } from "./inputs";
 
 async function main() {
+	console.log("::debug::main");
+
 	try {
 		let output;
 

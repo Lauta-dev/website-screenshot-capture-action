@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { width, height, type, quality, outputDir, script } from "./inputs";
 import { Warning } from "./Warning";
 import { scriptToText } from "./scriptToText";
+import { PageFile } from "./interface/pageFile";
 
 async function savePageScreenshot({
 	url,
@@ -59,7 +60,7 @@ export async function captureScreenshot({
 	onlyPageName,
 	onlyPageUrl,
 }: {
-	pages?: { name: string; url: string; script: string }[];
+	pages?: PageFile[];
 	onlyPageName?: string;
 	onlyPageUrl?: string;
 }) {

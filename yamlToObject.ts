@@ -1,16 +1,8 @@
 import { parse } from "yaml";
 import { readFileSync } from "node:fs";
+import { PageFile } from "./interface/pageFile";
 
-export async function yamlToObject(file: string): Promise<
-	| [
-			{
-				name: string;
-				url: string;
-				script: string;
-			},
-	  ]
-	| Error
-> {
+export async function yamlToObject(file: string): Promise<PageFile[] | Error> {
 	try {
 		const yaml = readFileSync(file, "utf8");
 		return parse(yaml).pages;

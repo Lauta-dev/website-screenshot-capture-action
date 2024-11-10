@@ -9,7 +9,6 @@ async function main() {
 
 		if (pagesFile) {
 			const arr = await yamlToObject(pagesFile);
-			console.log(arr);
 
 			if (!arr) {
 				output = await captureScreenshot({ pages: arr });

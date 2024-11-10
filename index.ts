@@ -3,9 +3,9 @@ import { captureScreenshot } from "./generateScreenshot";
 import { yamlToObject } from "./yamlToObject";
 import { pagesFile, url, name, outputDir } from "./inputs";
 
-async function main() {
-	console.log("::debug::main");
+console.log("::debug::main");
 
+async function main() {
 	try {
 		let output;
 

@@ -20,10 +20,14 @@ async function main() {
 				onlyPageUrl: url,
 				onlyPageName: name,
 			});
+		} else {
+			throw new Error(
+				"Se debe proporcionar un archivo YAML o los parámetros 'url' y 'name'.",
+			);
 		}
 
 		if (!output) {
-			return;
+			throw new Error("No se generó ninguna captura de pantalla.");
 		}
 
 		if (!output.ok) {

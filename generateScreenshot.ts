@@ -65,6 +65,7 @@ export async function captureScreenshot({
 	onlyPageUrl?: string;
 }) {
 	let browser;
+	console.log("captureScreenshot");
 
 	if (!fs.existsSync(outputDir)) {
 		fs.mkdirSync(outputDir);

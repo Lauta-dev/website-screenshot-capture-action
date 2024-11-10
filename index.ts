@@ -3,14 +3,13 @@ import { captureScreenshot } from "./generateScreenshot";
 import { yamlToObject } from "./yamlToObject";
 import { pagesFile, url, name, outputDir } from "./inputs";
 
-console.log("::debug::main");
-
 async function main() {
 	try {
 		let output;
 
 		if (pagesFile) {
 			const arr = await yamlToObject(pagesFile);
+			console.log(arr);
 
 			if (!arr) {
 				output = await captureScreenshot({ pages: arr });

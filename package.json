@@ -1,27 +1,27 @@
 {
-	"name": "website-screenshot-capture",
-	"description": "A GitHub Action to capture screenshots of websites.",
-	"author": "lautaro",
-	"version": "1.0.0",
-	"main": "index.ts",
-	"scripts": {
-		"build": "./build.sh",
-		"build:index": "ncc build index.js --license licenses.txt"
-	},
-	"license": "ISC",
-	"keywords": [
-		"github-actions",
-		"screenshot",
-		"web",
-		"automation"
-	],
-	"dependencies": {
-		"@actions/core": "1.11.1",
-		"puppeteer": "23.6.0",
-		"yaml": "2.6.0"
-	},
-	"devDependencies": {
-		"@vercel/ncc": "0.38.2",
-		"typescript": "^5.6.3"
-	}
+  "name": "website-screenshot-capture",
+  "description": "A GitHub Action to capture screenshots of websites.",
+  "author": "lautaro",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "build": "./build.sh",
+    "build:index": "ncc build index.ts --license licenses.txt"
+  },
+  "license": "ISC",
+  "keywords": [
+    "github-actions",
+    "screenshot",
+    "web",
+    "automation"
+  ],
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "puppeteer": "23.6.0",
+    "yaml": "2.6.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.38.2",
+    "typescript": "^5.6.3"
+  }
 }

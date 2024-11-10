@@ -16,7 +16,7 @@
 - name: Website screenshot
   uses: lauta-dev/website-screenshot-capture-action
   with:
-    urls_input_file: pages.yml # or pages.yaml
+    urls_input_file: anything.yml # or pages.yaml
 ```
 > [!NOTE]
 > The file can be named however you like, but it needs to be in YAML format.
@@ -51,7 +51,8 @@
 | height     | number    | 768            |                 |
 | type       | string    | png            | png, webp, jpeg |
 | quality    | number    | 100            | 0 to 100        |
-| output_dir     | string    | screenshots    | 0 to 100        |
+| output_dir     | string    | screenshots    |         |
+| script         | string    |                |         |
 
 > [!NOTE]
 > Quality is only applicable to webp and jpeg.
@@ -110,7 +111,7 @@ jobs:
     needs: [screenshots]
     steps:
       - name: Clone repository
-        run: git clone https://github.com/Lauta-dev/resource.git .
+        run: git clone https://github.com/"user"/"repo".git
 
       - name: Download artifact
         uses: actions/download-artifact@v3
@@ -121,7 +122,7 @@ jobs:
         run: |
           git config user.name "${{ secrets.GH_USERNAME }}"
           git config user.email "${{ secrets.GH_MAIL }}"
-          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/Lauta-dev/resource.git
+          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/"user"/"repo".git
 
       - name: Add images and commited
         run: |

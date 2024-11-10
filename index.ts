@@ -12,6 +12,7 @@ async function main() {
 
 			if (!arr) {
 				output = await captureScreenshot({ pages: arr });
+				console.log(output);
 			}
 		} else if (url && name) {
 			output = await captureScreenshot({

@@ -3,3 +3,7 @@ pages:
     name: Doc de github
   - url: https://stackoverflow.com/questions/62228154/puppeteer-fails-to-initiate-in-github-actions
     name: startasd
+    # It's optional
+    # It will be used to run a script before the screenshot
+    # For example, remove headers
+    script: remove_headers.js

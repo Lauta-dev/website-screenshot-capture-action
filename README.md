@@ -62,7 +62,7 @@ pages:
 | type       | string    | png            | png, webp, jpeg |
 | quality    | number    | 100            | 0 to 100        |
 | output_dir     | string    | screenshots    |         |
-| script         | string    |                |         |
+| script         | string    | " "               |         |
 
 > [!NOTE]
 > Quality is only applicable to webp and jpeg.

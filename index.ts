@@ -1,7 +1,7 @@
 import * as core from "@actions/core";
-import { captureScreenshot } from "./generateScreenshot";
-import { yamlToObject } from "./yamlToObject";
-import { pagesFile, url, name, outputDir } from "./inputs";
+import { captureScreenshot } from "./src/generateScreenshot";
+import { yamlToObject } from "./src/yamlToObject";
+import { pagesFile, url, name, outputDir } from "./src/inputs";
 
 async function main() {
 	try {

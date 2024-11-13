@@ -5,6 +5,7 @@ import { Warning } from "./Warning";
 import { scriptToText } from "./scriptToText";
 import { PageFile } from "./interface/pageFile";
 import * as core from "@actions/core";
+import { allTypes, acceptedQualityFormat } from "./const";
 
 async function savePageScreenshot({
 	url,
@@ -41,10 +42,15 @@ async function savePageScreenshot({
 
 		const screenshotOptions: ScreenshotOptions = { path, type };
 
-		if (type == "webp" || type == "jpeg") {
+		if (acceptedQualityFormat.includes(type)) {
 			screenshotOptions.quality = quality;
-		} else {
-			throw new Error(`Formato de imagen no soportado: ${type}`);
+		}
+
+		if (!allTypes.includes(type)) {
+			let acceptedFormats = allTypes.join(", ");
+			throw new Error(
+				`Formato de imagen no soportado: ${type}, se admite: ${acceptedFormats}`,
+			);
 		}
 
 		await page.screenshot(screenshotOptions);

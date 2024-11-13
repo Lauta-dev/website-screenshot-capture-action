@@ -18,9 +18,19 @@
   with:
     urls_input_file: anything.yml # or pages.yaml
 ```
-> [!NOTE]
-> The file can be named however you like, but it needs to be in YAML format.
-> [The file need this format](./pages.yaml)
+
+#### File example
+```yaml
+pages:
+  - url: https://google.com
+    name: google
+  - url: https://github.com/Lauta-dev/website-screenshot-capture-action/
+    name: Repository
+    # It's optional
+    # It will be used to run a script before the screenshot
+    # For example, remove headers
+    script: remove_headers.js
+```
 
 ### Direct inputs
 ```yaml

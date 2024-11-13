@@ -5,7 +5,7 @@ import { Warning } from "./Warning";
 import { scriptToText } from "./scriptToText";
 import { PageFile } from "./interface/pageFile";
 import * as core from "@actions/core";
-import { allTypes, acceptedQualityFormat } from "./const";
+import { allTypes, acceptedQualityFormat, acceptedFormats } from "./const";
 
 async function savePageScreenshot({
 	url,
@@ -47,7 +47,6 @@ async function savePageScreenshot({
 		}
 
 		if (!allTypes.includes(type)) {
-			let acceptedFormats = allTypes.join(", ");
 			throw new Error(
 				`Formato de imagen no soportado: ${type}, se admite: ${acceptedFormats}`,
 			);

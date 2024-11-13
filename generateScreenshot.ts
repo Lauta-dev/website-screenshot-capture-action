@@ -95,7 +95,7 @@ export async function captureScreenshot({
 					core.warning(`Error procesando la página ${name}: ${error}`);
 				}
 			}
-		} else {
+		} else if (onlyPageName && onlyPageUrl) {
 			// Carga la url, name y script de la página por los inputs
 			try {
 				await savePageScreenshot({
@@ -107,6 +107,10 @@ export async function captureScreenshot({
 			} catch (error) {
 				return { ok: false, message: error };
 			}
+		} else {
+			throw new Error(
+				"Se debe espicificar el 'name' y 'url' de la página o el archivo de páginas 'urls_input_file'",
+			);
 		}
 
 		return {

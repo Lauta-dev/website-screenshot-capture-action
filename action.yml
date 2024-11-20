@@ -47,6 +47,11 @@ inputs:
     default: ' '
     required: false
 
+  dark_mode:
+    description: 'Dark mode for the screenshot (default: light). Options: light, dark. (Its applied in all pages)'
+    default: 'light'
+    required: false
+
 outputs:
   screenshot-path:
     description: 'Path where the screenshot is saved'

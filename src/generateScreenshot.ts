@@ -1,6 +1,14 @@
 import puppeteer, { Page, ScreenshotOptions } from "puppeteer";
 import fs from "node:fs";
-import { width, height, type, quality, outputDir, script } from "./inputs";
+import {
+	width,
+	height,
+	type,
+	quality,
+	outputDir,
+	script,
+	darkMode,
+} from "./inputs";
 import { Warning } from "./Warning";
 import { scriptToText } from "./scriptToText";
 import { PageFile } from "./interface/pageFile";
@@ -24,6 +32,12 @@ async function savePageScreenshot({
 		}
 
 		const res = await page.goto(url);
+		const emulateMediaFeatures = [
+			{
+				name: "prefers-color-scheme",
+				value: darkMode,
+			},
+		];
 
 		if (!res) {
 			return;
@@ -52,6 +66,7 @@ async function savePageScreenshot({
 			);
 		}
 
+		await page.emulateMediaFeatures(emulateMediaFeatures);
 		await page.screenshot(screenshotOptions);
 
 		fs.renameSync(path, `${outputDir}/${path}`);

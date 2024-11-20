@@ -47,8 +47,8 @@ inputs:
     default: ' '
     required: false
 
-  dark_mode:
-    description: 'Dark mode for the screenshot (default: light). Options: light, dark. (Its applied in all pages)'
+  ui_mode:
+    description: 'UI Mode for the screenshot (default: light). Options: light, dark. (Its applied in all pages)'
     default: 'light'
     required: false
 

@@ -7,7 +7,7 @@ import {
 	quality,
 	outputDir,
 	script,
-	darkMode,
+	uiMode,
 } from "./inputs";
 import { Warning } from "./Warning";
 import { scriptToText } from "./scriptToText";
@@ -35,7 +35,7 @@ async function savePageScreenshot({
 		const emulateMediaFeatures = [
 			{
 				name: "prefers-color-scheme",
-				value: darkMode,
+				value: uiMode,
 			},
 		];
 

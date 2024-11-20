@@ -44,32 +44,32 @@ pages:
 ## Inputs
 
 ### Required inputs
-| Input      | Type      |
-|------------|-----------|
-| name       | string    |
-| url        | string    |
-| urls_input_file | YAML file |
+| Input             | Type      |
+|-------------------|-----------|
+| name              | string    |
+| url               | string    |
+| urls_input_file   | YAML file |
 
 > [!NOTE]
 > By default, the program will try to load the YAML file. If not found, it will load url and name. 
 
 ### Optional inputs
 
-| Input      | Type      | Default        | Posible value   |
-|------------|-----------|----------------|-----------------|
-| width      | number    | 1366           |                 |
-| height     | number    | 768            |                 |
-| type       | string    | png            | png, webp, jpeg |
-| quality    | number    | 100            | 0 to 100        |
-| output_dir     | string    | screenshots    |         |
-| script         | string    | " "               |         |
+| Input             | Type      | Default           | Posible value     |
+|-------------------|-----------|-------------------|-------------------|
+| width             | number    | 1366              |                   |
+| height            | number    | 768               |                   |
+| type              | string    | png               | png, webp, jpeg   |
+| quality           | number    | 100               | 0 to 100          |
+| output_dir        | string    | screenshots       |                   |
+| script            | string    | " "               |                   |
+| ui_mode           | string    | "light"           | light, dark       |
 
 > [!NOTE]
 > Quality is only applicable to webp and jpeg.
 
 ## Output
 Screenshots are saved in screenshots/.
-
 
 ## Example
 ```yaml

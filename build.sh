@@ -34,7 +34,7 @@ git_commit() {
 
 git_tag() {
   echo "-----| git tag -a -m $tag_name v$tag_ver |-----"
-  git tag -a -m "$tag_name" "v$tag_ver"
+  git tag -a -m "$tag_name" $tag_ver
   echo "--------------------------------------"
   echo " "
 }

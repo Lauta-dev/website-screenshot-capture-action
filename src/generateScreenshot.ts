@@ -44,7 +44,7 @@ async function savePageScreenshot({
 		}
 
 		if (!res.ok()) {
-			core.warning(
+			core.info(
 				`La URL: ${url} no se procesara, código de estado: ${res.status()}`,
 			);
 		}
@@ -70,7 +70,7 @@ async function savePageScreenshot({
 		await page.screenshot(screenshotOptions);
 
 		fs.renameSync(path, `${outputDir}/${path}`);
-		core.info(`Info: URL ${url} procesada. Ruta: ${outputDir}/${path}`);
+		core.info(`URL ${url} procesada. Ruta: ${outputDir}/${path}`);
 	} catch (error) {
 		throw new Error(`${error}`);
 	}

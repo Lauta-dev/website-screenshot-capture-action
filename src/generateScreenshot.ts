@@ -69,6 +69,12 @@ async function savePageScreenshot({
 		await page.emulateMediaFeatures(emulateMediaFeatures);
 		await page.screenshot(screenshotOptions);
 
+		// Esto es algo temporal
+		if (outputDir === ".") {
+			core.info(`URL ${url} procesada. Ruta: ${path}`);
+			return;
+		}
+
 		fs.renameSync(path, `${outputDir}/${path}`);
 		core.info(`URL ${url} procesada. Ruta: ${outputDir}/${path}`);
 	} catch (error) {
